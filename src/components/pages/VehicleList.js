@@ -2,8 +2,9 @@ import React from 'react';
 
 // Function component for a content area
 function VehicleList() {
-    return (
-        <div className="horse panel panel-default" id="horse">
+  return (
+    <React.Fragment>
+    <div className="horse panel panel-default" id="horse">
       <div className="panel-heading">
         <h3 className="panel-title">Horse</h3>
       </div>
@@ -19,5 +20,9 @@ function VehicleList() {
         </div>
       </div>
     </div>
-    );
+    </React.Fragment>
+  );
 }
+
+
+export default VehicleList;
