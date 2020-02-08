@@ -1,6 +1,5 @@
-import React from 'react';
-
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 class VehicleList extends Component {
   // Class properties 
@@ -13,9 +12,9 @@ class VehicleList extends Component {
 
     // Get all
     fetch(this.url)
-      .then(response => {
+      .then(function(response) {
         // Optional...
-        //this.setState({ httpStatusCode: response.status, httpStatusOk: response.ok });
+        this.setState({ httpStatusCode: response.status, httpStatusOk: response.ok });
         if (response.ok) {
           // Parse the response body as JSON
           return response.json();
@@ -27,12 +26,12 @@ class VehicleList extends Component {
           throw Error(`HTTP ${response.status}, ${response.statusText}`);
         }
       })
-      .then(responseData => {
+      .then(function(responseData) {
         // "responseData" is an object; here, we're interested in its "data" property
         // Study the shape of the data in the reqres.in service
         this.setState({ vehicles: responseData.data });
         // Optional...
-        //console.log(responseData.data);
+        console.log(responseData.data);
       })
       .catch(error => {
         // Handles an error thrown above, as well as network general errors
@@ -50,14 +49,12 @@ class VehicleList extends Component {
         <p><Link className='btn btn-default' to='/users/create'>Add a New Vehicle</Link></p>
         <table className='table table-striped'>
           <TableHeader />
-          <TableBody users={this.state.users} />
+          <TableBody vehicles={this.state.vehicles} />
         </table>
       </div>
     );
   }
 }
-
-export default VehicleList;
 
 // ############################################################
 // Most of the following was copied from the react-tania-updated code example
@@ -68,11 +65,12 @@ const TableHeader = () => {
   return (
     <thead>
       <tr>
-        <th>Identifier</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Avatar</th>
-        <th></th>
+        <th>ID</th>
+        <th>Photo</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>MSRP</th>
       </tr>
     </thead>
   );
@@ -83,11 +81,14 @@ const TableHeader = () => {
 const TableBody = (props) => {
 
   // Using the array of objects, create a new array of React elements
-  let rows = props.vehicles.map((vehicle, index) => {
-    return (
-      <TableRow vehicle={vehicles} key={index} />
-    );
-  });
+  if (props.vehicles) {
+    var rows = props.vehicles.map(function (vehicle, index) {
+      return (
+        <TableRow vehicle={vehicle} key={index} />
+      );
+    });
+  }
+  
 
   return <tbody>{rows}</tbody>
 }
@@ -106,7 +107,7 @@ const TableRow = props => {
   return (
     <tr>
       <td>{v.id}</td>
-      <td><img src={u.avatar} alt='' className='imgInTable' /></td>
+      <td><img src={v.avatar} alt='' className='imgInTable' /></td>
       <td>{v.make}</td>
       <td>{v.model}</td>
       <td>{v.colour}</td>
