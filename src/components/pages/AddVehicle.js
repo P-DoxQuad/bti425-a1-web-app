@@ -10,7 +10,7 @@ function AddVehicle() {
 
             <br />
 
-            <form method="post" action="/vehicle/add">
+            <form method="post" action="/api/vehicles">
 
                 <fieldset>
                     <legend>Vehicle Information</legend>
@@ -59,9 +59,13 @@ function AddVehicle() {
                                 <textarea class="form-control" id="description" name="description" type="text" />
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <label for="photo">Photo:</label>
+                            <input class="form-control" id="photo" name="photo" type="text" />
+                        </div>
                     </div>
                 </fieldset>
-
+                <hr />
                 <fieldset>
                     <legend>Purchase Information</legend>
                     <div class="row">
@@ -79,21 +83,23 @@ function AddVehicle() {
                                     type="text" />
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="hireDate">Hire Date</label>
-                                <input class="form-control" id="hireDate" name="hireDate" type="text" />
+                                <label for="purchaseDate">Purchase Date:</label>
+                                <input class="form-control" id="purchaseDate" name="purchaseDate"
+                                    type="text" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="pricePaid">Price Paid</label>
+                                <input class="form-control" id="pricePaid" name="pricePaid" type="text" />
                             </div>
                         </div>
                     </div>
                 </fieldset>
-
-                <hr />
-
+                
                 <input type="submit" class="btn btn-primary pull-right" value="Add Vehicle" /><br /><br /><br />
-
             </form>
         </div>
     </div>
