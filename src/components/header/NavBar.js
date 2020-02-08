@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavButton from '../NavButton'
 
 class NavBar extends Component {
