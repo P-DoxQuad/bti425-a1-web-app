@@ -14,13 +14,14 @@ class NavBar extends Component {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href="index.html" class="navbar-brand">Assignment 1</a>
+                        <a href="index.html" class="navbar-brand">Michael Dzura</a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
                             <NavButton name="Home" page="/" />
                             <NavButton name="Vehicle List" page="/vehicle-list" />
-                            <NavButton name="About" page="/about" />
+                            <NavButton name="Add A Vehicle" page="/add-vehicle" />
+                            <NavButton name="Other" page="/about" />
                         </ul>
                     </div>
                 </div>
