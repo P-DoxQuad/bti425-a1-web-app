@@ -16,15 +16,13 @@ class NavBar extends Component {
                         </button>
                         <a href="index.html" class="navbar-brand">Assignment 1</a>
                     </div>
-                    <Router>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
                             <NavButton name="Home" page="/" />
-                            <NavButton name="Vehicle List" page="/vehicles" />
+                            <NavButton name="Vehicle List" page="/vehicle-list" />
                             <NavButton name="About" page="/about" />
                         </ul>
                     </div>
-                    </Router>
                 </div>
             </nav>
         )
