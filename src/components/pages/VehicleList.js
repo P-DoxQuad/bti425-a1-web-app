@@ -113,8 +113,8 @@ const TableRow = props => {
       <td>{v.colour}</td>
       <td>{v.year}</td>
       <td>{v.vin}</td>
-      <td>{v.msrp}</td>
-      <td><Link className='btn btn-default' to={`/vehicles/detail/${v.id}`}>Details</Link>&nbsp;&nbsp;
+      <td>${v.msrp}</td>
+      <td><Link className='btn btn-default' to={`/vehicle/detail/${v.id}`}>Details</Link>&nbsp;&nbsp;
             <Link className='btn btn-warning' to={`/vehicles/edit/${v.id}`}>Edit</Link>&nbsp;&nbsp;
             <Link className='btn btn-danger' to={`/vehicle/delete/${v.id}`}>Delete</Link></td>
     </tr>

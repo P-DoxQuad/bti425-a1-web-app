@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import './App.css';
+
 
 class VehicleDetail extends Component {
 
@@ -45,23 +45,28 @@ class VehicleDetail extends Component {
     document.title = `Vehicle ${this.props.id} Details`;
 
     // For coding convenience, create a shortcut object
-    const v = this.state.user;
+    const v = this.state.vehicles;
 
     return (
       <div>
-        <h4>Details About Vehicle - {v.make} {v.model} (VIN:{v.vin}) from Database</h4>
+        <h4>Details About Vehicle #{v.id} - {v.make} {v.model} (VIN:{v.vin}) from Database</h4>
 
         {this.state.httpStatusOk ? (
           <div className="row">
             <div className="col-md-6">
               <dl className="dl-horizontal">
-                <dt>ID</dt><dd>{v.id}</dd>
                 <dt>Make</dt><dd>{v.make}</dd>
                 <dt>Model</dt><dd>{v.model}</dd>
                 <dt>Colour</dt><dd>{v.colour}</dd>
                 <dt>Year</dt><dd>{v.year}</dd>
                 <dt>VIN</dt><dd>{v.vin}</dd>
-                <dt>MSRP</dt><dd>{v.msrp}</dd>
+                <dt>MSRP</dt><dd>${v.msrp}</dd>
+                <dt>Description</dt><dd>{v.description}</dd>
+                <br />
+                <dt>Purchaser Name</dt><dd>{v.purchaserName}</dd>
+                <dt>Purchaser Email</dt><dd>{v.purchaserEmail}</dd>
+                <dt>Purchase Date</dt><dd>{v.purchaseDate}</dd>
+                <dt>Price Paid</dt><dd>{v.pricePaid}</dd>
               </dl>
             </div>
             <div className="col-md-2">
