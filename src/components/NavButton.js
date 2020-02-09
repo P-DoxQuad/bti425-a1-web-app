@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 
 class NavButton extends Component {
-    render(props) {
+    render() {
         return (
                 <li class="active"><Link to={this.props.page}>{this.props.name}</Link></li>
         )
