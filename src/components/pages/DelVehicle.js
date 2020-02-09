@@ -9,12 +9,15 @@ class DelVehicle extends Component {
     }
 
     state = { vehicles: {}, httpStatusCode: 0, httpStatus: false };
+    
+    //url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
+    url = `http://localhost:8080/api/vehicles/${this.props.id}`;
 
     componentDidMount() {
-        const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
+        
 
         // Get all
-        fetch(url)
+        fetch(this.url)
             .then(response => {
                 // Optional...
                 this.setState({ httpStatusCode: response.status, httpStatusOk: response.ok });
@@ -47,8 +50,9 @@ class DelVehicle extends Component {
     handleSubmit(e) {
 
         // Delete
-        fetch(this.url, { method: 'DELETE' })
+        fetch(this.url, { method: 'DELETE'})
             .then(response => {
+                console.log("Submit: " + JSON.stringify(response));
                 if (response.ok) {
                     // Parse the response body as JSON
                     return response.status;
@@ -66,7 +70,7 @@ class DelVehicle extends Component {
                 // Optional...
                 console.log(responseData);
                 // Redirect
-                this.props.history.push('/users');
+                this.props.history.push('/vehicle');
             })
             .catch(error => {
                 // Handles an error thrown above, as well as network general errors

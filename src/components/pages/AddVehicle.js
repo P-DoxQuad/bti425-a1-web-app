@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
+import { resolve } from 'dns';
 
 class AddVehicle extends Component {
     constructor(props) {
@@ -24,8 +25,6 @@ class AddVehicle extends Component {
         purchaserEmail: '',
         pricePaid: ''
     };
-
-    url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle/add";
 
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
@@ -56,8 +55,11 @@ class AddVehicle extends Component {
         // Turn off default form handling
         //e.preventDefault();
 
+        //const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle/add";
+        const url = "http://localhost:8080/api/vehicle";
+
         const newVehicle = {
-            'id': this.state.id,
+            'id': 202,
             'make': this.state.make,
             'model': this.state.model,
             'colour': this.state.colour,
@@ -72,12 +74,13 @@ class AddVehicle extends Component {
             'pricePaid': this.state.pricePaid
         };
 
-        fetch(this.url, {
+        fetch(url, {
             method: 'POST',
             headers: { "Content-Type": 'application/json' },
             body: JSON.stringify(newVehicle)
         })
             .then(response => {
+                console.log("Posting Vehicle from Form");
                 if (response.ok) {
                     // Parse the response body as JSON
                     return response.json();
@@ -95,7 +98,8 @@ class AddVehicle extends Component {
                 // Optional...
                 console.log(responseData);
                 // The identifier "id" can be used to redirect
-                this.props.history.push(`/vehicle/detail/${responseData.id}`);
+                //this.props.history.push(`/vehicles${responseData.id}`);
+                resolve(responseData);
             })
             .catch(error => {
                 // Handles an error thrown above, as well as network general errors
@@ -121,13 +125,13 @@ class AddVehicle extends Component {
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="make">Make:</label>
-                                            <input class="form-control" id="make" name="make" type="text" />
+                                            <input class="form-control" id="make" name="make" onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="model">Model:</label>
-                                            <input class="form-control" id="model" name="model" type="text" />
+                                            <input class="form-control" id="model" name="model" onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                 </div>
@@ -135,13 +139,13 @@ class AddVehicle extends Component {
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="colour">Colour:</label>
-                                            <input class="form-control" id="colour" name="colour" type="text" />
+                                            <input class="form-control" id="colour" name="colour" onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="year">Year:</label>
-                                            <input class="form-control" id="year" name="year" type="text" />
+                                            <input class="form-control" id="year" name="year" onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                 </div>
@@ -149,22 +153,22 @@ class AddVehicle extends Component {
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="vin">Vin Number:</label>
-                                            <input class="form-control" id="vin" name="vin" type="text" />
+                                            <input class="form-control" id="vin" name="vin" onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="msrp">MSRP:</label>
-                                        <input class="form-control" id="msrp" name="msrp" type="text" />
+                                        <input class="form-control" id="msrp" name="msrp" onChange={this.handleChange} type="text" />
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="description">Description:</label>
-                                            <textarea class="form-control" id="description" name="description" type="text" />
+                                            <textarea class="form-control" id="description" name="description" onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <label for="photo">Photo:</label>
-                                        <input class="form-control" id="photo" name="photo" type="text" />
+                                        <input class="form-control" id="photo" name="photo" onChange={this.handleChange} type="text" />
                                     </div>
                                 </div>
                             </fieldset>
@@ -175,28 +179,29 @@ class AddVehicle extends Component {
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="purchaserName">Purchaser Name:</label>
-                                            <input class="form-control" id="purchaserName" name="purchaserName"
+                                            <input class="form-control" id="purchaserName" name="purchaserName" onChange={this.handleChange}
                                                 type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="purchaserEmail">Purchaser Email:</label>
-                                            <input class="form-control" id="purchaserEmail" name="purchaserEmail"
+                                            <input class="form-control" id="purchaserEmail" name="purchaserEmail" onChange={this.handleChange}
                                                 type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="purchaseDate">Purchase Date:</label>
-                                            <input class="form-control" id="purchaseDate" name="purchaseDate"
+                                            <input class="form-control" id="purchaseDate" name="purchaseDate" onChange={this.handleChange}
                                                 type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="pricePaid">Price Paid</label>
-                                            <input class="form-control" id="pricePaid" name="pricePaid" type="text" />
+                                            <input class="form-control" id="pricePaid" name="pricePaid" onChange={this.handleChange} 
+                                                type="text" />
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +209,7 @@ class AddVehicle extends Component {
 
                             <div className="form-group">
                                 <div className="col-md-offset-2 col-md-6">
-                                    <button onClick={this.handleSubmit} className="btn btn-primary">Add Vehicle</button>&nbsp;&nbsp;
+                                    <button onClick={this.props.handleSubmit} className="btn btn-primary">Add Vehicle</button>&nbsp;&nbsp;
                                     <Link className='btn btn-default' to='/vehicles'>Cancel</Link>
                                 </div>
                             </div>

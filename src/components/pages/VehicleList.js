@@ -7,7 +7,8 @@ class VehicleList extends Component {
   state = { vehicles: [] };
 
   componentDidMount() {
-    const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicles/";
+    //const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicles/";
+    const url = "http://localhost:8080/api/vehicles";
 
     // Get all
     fetch(url)
@@ -45,7 +46,7 @@ class VehicleList extends Component {
     return (
       <div>
         <h4>List of Vehicles, from custom WEB API service</h4>
-        <p><Link className='btn btn-default' to='/add-vehicle'>Add a Vehicle</Link></p>
+        <p><Link className='btn btn-default' to='/vehicle/add'>Add a Vehicle</Link></p>
         <table className='table table-striped'>
           <TableHeader />
           <TableBody vehicles={this.state.vehicles} />
