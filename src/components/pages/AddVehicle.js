@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function AddVehicle() {
     return (
@@ -10,7 +10,7 @@ function AddVehicle() {
 
             <br />
 
-            <form method="post" action="/api/vehicles">
+            <form method="post" action="/api/vehicles/add">
 
                 <fieldset>
                     <legend>Vehicle Information</legend>

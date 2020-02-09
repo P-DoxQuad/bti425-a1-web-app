@@ -18,8 +18,8 @@ class NavBar extends Component {
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
                             <NavButton name="Home" page="/" />
-                            <NavButton name="Vehicle List" page="/vehicle-list" />
-                            <NavButton name="Add A Vehicle" page="/add-vehicle" />
+                            <NavButton name="Vehicle List" page="/vehicles" />
+                            <NavButton name="Add A Vehicle" page="/vehicle/add/" />
                             <NavButton name="Other" page="/about" />
                         </ul>
                     </div>
