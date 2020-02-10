@@ -6,6 +6,7 @@ import VehicleList from "./components/pages/VehicleList.js";
 import VehicleDetail from "./components/pages/VehicleDetail.js";
 import AddVehicle from "./components/pages/AddVehicle.js";
 import DelVehicle from "./components/pages/DelVehicle.js";
+import EditVehicle from "./components/pages/EditVehicle.js";
 import About from "./components/pages/About.js";
 
 //import UserList from "./components/pages/FetchTest.js";
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/vehicle/detail/:id" render={(props) => (<VehicleDetail id={props.match.params.id}/>)} />
           <Route exact path="/vehicle/add/" render={() => (<AddVehicle />)} />
           <Route exact path="/vehicle/delete/:id" render={(props) => (<DelVehicle id={props.match.params.id}/>)} />
+          <Route exact path="/vehicle/edit/:id" render={(props) => (<EditVehicle id={props.match.params.id}/>)} />
           <Route exact path="/about" render={() => (<About />)} />
         </Switch>
       </Router>
