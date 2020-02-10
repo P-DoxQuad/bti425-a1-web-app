@@ -107,7 +107,7 @@ const TableRow = props => {
   // Render the row
   return (
     <tr>
-      <td>{v.id}</td>
+      <td>{v._id}</td>
       <td><img src={v.photo} alt='' className='imgInTable' /></td>
       <td>{v.make}</td>
       <td>{v.model}</td>
@@ -115,9 +115,9 @@ const TableRow = props => {
       <td>{v.year}</td>
       <td>{v.vin}</td>
       <td>${v.msrp}</td>
-      <td><Link className='btn btn-default' to={`/vehicle/detail/${v.id}`}>Details</Link>&nbsp;&nbsp;
-            <Link className='btn btn-warning' to={`/vehicles/edit/${v.id}`}>Edit</Link>&nbsp;&nbsp;
-            <Link className='btn btn-danger' to={`/vehicle/delete/${v.id}`}>Delete</Link></td>
+      <td><Link className='btn btn-default' to={`/vehicle/detail/${v._id}`}>Details</Link>&nbsp;&nbsp;
+            <Link className='btn btn-warning' to={`/vehicle/edit/${v._id}`}>Edit</Link>&nbsp;&nbsp;
+            <Link className='btn btn-danger' to={`/vehicle/delete/${v._id}`}>Delete</Link></td>
     </tr>
   );
 }
