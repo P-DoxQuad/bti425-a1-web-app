@@ -70,7 +70,7 @@ class DelVehicle extends Component {
                 // Optional...
                 console.log(responseData);
                 // Redirect
-                this.props.history.push('/vehicle');
+                this.props.history.push('/vehicles');
             })
             .catch(error => {
                 // Handles an error thrown above, as well as network general errors
@@ -79,14 +79,14 @@ class DelVehicle extends Component {
     }
 
     render() {
-        document.title = `Delete Vehicle ${this.props.id}`;
+        document.title = `Delete Vehicle ${this.props._id}`;
 
         // For coding convenience, create a shortcut object
         const v = this.state.vehicles;
 
         return (
             <div>
-                <h4>Delete Vehicle #{v.id} - {v.make} {v.model} (VIN:{v.vin}) from Database</h4>
+                <h4>Delete Vehicle #{v._id} - {v.make} {v.model} (VIN:{v.vin}) from Database</h4>
 
                 {this.state.httpStatusOk ? (
                     <div className="row">
