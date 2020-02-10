@@ -10,8 +10,8 @@ class DelVehicle extends Component {
 
     state = { vehicles: {}, httpStatusCode: 0, httpStatus: false };
     
-    //url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
-    url = `http://localhost:8080/api/vehicles/${this.props.id}`;
+    url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
+    //url = `http://localhost:8080/api/vehicles/${this.props.id}`;
 
     componentDidMount() {
         

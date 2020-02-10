@@ -51,8 +51,8 @@ class EditVehicle extends Component {
 
     componentDidMount() {
         
-        //const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
-        const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
+        const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
+        //const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
 
         // Get all
         fetch(url)
@@ -89,8 +89,8 @@ class EditVehicle extends Component {
         // Turn off default form handling
         //e.preventDefault();
 
-        //const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle/add";
-        const url = "http://localhost:8080/api/vehicle";
+        const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle";
+        //const url = "http://localhost:8080/api/vehicle";
 
         const newVehicle = {
             'id': this.props.id,
