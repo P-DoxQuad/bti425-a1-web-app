@@ -125,13 +125,15 @@ class AddVehicle extends Component {
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="make">Make:</label>
-                                            <input class="form-control" id="make" name="make" onChange={this.handleChange} type="text" />
+                                            <input class="form-control" id="make" name="make" ref={(i) => { this.input = i; }} 
+                                                   onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="model">Model:</label>
-                                            <input class="form-control" id="model" name="model" onChange={this.handleChange} type="text" />
+                                            <input class="form-control" id="model" name="model" ref={(i) => { this.input = i; }}
+                                                   onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                 </div>
@@ -139,13 +141,15 @@ class AddVehicle extends Component {
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="colour">Colour:</label>
-                                            <input class="form-control" id="colour" name="colour" onChange={this.handleChange} type="text" />
+                                            <input class="form-control" id="colour" name="colour" ref={(i) => { this.input = i; }}
+                                                   onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="year">Year:</label>
-                                            <input class="form-control" id="year" name="year" onChange={this.handleChange} type="text" />
+                                            <input class="form-control" id="year" name="year" ref={(i) => { this.input = i; }}
+                                                   onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                 </div>
