@@ -11,7 +11,7 @@ class AddVehicle extends Component {
     }
 
     state = {
-        id: '',
+        //id: '',
         make: '',
         model: '',
         colour: '',
@@ -28,7 +28,7 @@ class AddVehicle extends Component {
 
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
-        console.log(`ID: ${this.state.id}, 
+        console.log(` 
                      Make: ${this.state.make},
                      Model: ${this.state.model}, 
                      Colour: ${this.state.colour},
@@ -59,7 +59,7 @@ class AddVehicle extends Component {
         const url = "http://localhost:8080/api/vehicle";
 
         const newVehicle = {
-            'id': 202,
+            //'id': 202,
             'make': this.state.make,
             'model': this.state.model,
             'colour': this.state.colour,
