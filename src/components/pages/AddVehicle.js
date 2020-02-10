@@ -208,7 +208,7 @@ class AddVehicle extends Component {
                             </fieldset>
 
                             <div className="form-group">
-                                <div className="col-md-offset-2 col-md-6">
+                                <div className="col-md-offset-10 col-md-3">
                                     <button onClick={this.props.handleSubmit} className="btn btn-primary">Add Vehicle</button>&nbsp;&nbsp;
                                     <Link className='btn btn-default' to='/vehicles'>Cancel</Link>
                                 </div>
