@@ -53,7 +53,7 @@ class AddVehicle extends Component {
     handleSubmit(e) {
 
         // Turn off default form handling
-        //e.preventDefault();
+        e.preventDefault();
 
         //const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle";
         const url = "http://localhost:8080/api/vehicle";
@@ -112,6 +112,13 @@ class AddVehicle extends Component {
     }
 
     render() {
+        document.title = `Add New Vehicle`;
+
+        // If "this.input" exists (it will only get rendered if a form exists), set its focus
+        if (this.textInput && this.state.make.length === 0 && this.state.model.length === 0) {
+            //this.textInput.focus();
+        }
+
         return (
             <div class="container">
                 <div class="row">
