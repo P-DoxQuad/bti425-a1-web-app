@@ -55,8 +55,8 @@ class AddVehicle extends Component {
         // Turn off default form handling
         e.preventDefault();
 
-        //const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle";
-        const url = "http://localhost:8080/api/vehicle";
+        const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle";
+        //const url = "http://localhost:8080/api/vehicle";
 
         const newVehicle = {
             //'id': 202,
