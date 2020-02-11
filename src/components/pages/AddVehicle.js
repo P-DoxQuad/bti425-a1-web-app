@@ -55,8 +55,8 @@ class AddVehicle extends Component {
         // Turn off default form handling
         //e.preventDefault();
 
-        const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle";
-        //const url = "http://localhost:8080/api/vehicle";
+        //const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle";
+        const url = "http://localhost:8080/api/vehicle";
 
         const newVehicle = {
             //'id': 202,
@@ -76,7 +76,11 @@ class AddVehicle extends Component {
 
         fetch(url, {
             method: 'POST',
-            headers: { "Content-Type": 'application/json' },
+            mode: 'cors',
+            headers: { 
+                //"Content-Type": 'application/x-www-form-urlencoded'
+                "Content-Type": 'application/json' 
+            },
             body: JSON.stringify(newVehicle)
         })
             .then(response => {
@@ -98,12 +102,11 @@ class AddVehicle extends Component {
                 // Optional...
                 console.log(responseData);
                 // The identifier "id" can be used to redirect
-                //this.props.history.push(`/vehicles${responseData.id}`);
-                resolve(responseData);
+                this.props.history.push(`/vehicles`);
             })
             .catch(error => {
                 // Handles an error thrown above, as well as network general errors
-                console.log(error)
+                console.log(error.message)
             });
 
     }
