@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
-import { resolve } from 'dns';
 
 class EditVehicle extends Component {
     constructor(props) {
         super(props);
-
-        this.textInput = React.createRef();
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,7 +27,7 @@ class EditVehicle extends Component {
     };
 
     handleChange(e) {
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({vehicles: e.target.value});
         console.log(` 
                      Make: ${this.state.make},
                      Model: ${this.state.model}, 
@@ -82,12 +79,14 @@ class EditVehicle extends Component {
                 console.log(error)
             });
 
+
+
     };
 
     handleSubmit(e) {
 
         // Turn off default form handling
-        //e.preventDefault();
+        e.preventDefault();
 
         const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle";
         //const url = "http://localhost:8080/api/vehicle";
@@ -133,7 +132,6 @@ class EditVehicle extends Component {
                 console.log(responseData);
                 // The identifier "id" can be used to redirect
                 this.props.history.push(`/vehicle/detail/${this.props.id}`);
-                resolve(responseData);
             })
             .catch(error => {
                 // Handles an error thrown above, as well as network general errors
@@ -145,10 +143,16 @@ class EditVehicle extends Component {
     render() {
         document.title = `Edit Vehicle ${this.props.id}`;
 
-        // Determine the button state
-        const isDisabled = this.state.make.length === 0 || this.state.model.length === 0;
+        var v = this.state.vehicles;
+        var isDisabled = 0;
 
-        this.textInput.current = this.state.vehicles;
+        // Determine the button state
+        if (v.make === "" || v.model === "" || v.colour === "" || v.year === "" || v.vin === "" || v.msrp === "" ) {
+            isDisabled = true;
+            console.log(isDisabled);
+        } else {
+            isDisabled = false;
+        }
 
         // If "this.input" exists (it will only get rendered if a form exists), set its focus
         if (this.textInput && this.state.make.length === 0 && this.state.model.length === 0) {
@@ -171,15 +175,15 @@ class EditVehicle extends Component {
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="make">Make:</label>
-                                            <input class="form-control" id="make" name="make" ref={this.textInput}
-                                                onChange={this.handleChange} type="text" />
+                                            <input class="form-control" id="make" name="make" value={v.make} 
+                                                   onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="model">Model:</label>
-                                            <input class="form-control" id="model" name="model" ref={(i) => { this.input = i; }}
-                                                onChange={this.handleChange} type="text" />
+                                            <input class="form-control" id="model" name="model" value={v.model} 
+                                                   onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                 </div>
@@ -187,14 +191,14 @@ class EditVehicle extends Component {
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="colour">Colour:</label>
-                                            <input class="form-control" id="colour" name="colour" ref={(i) => { this.input = i; }}
+                                            <input class="form-control" id="colour" name="colour" value={v.colour} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="year">Year:</label>
-                                            <input class="form-control" id="year" name="year" ref={(i) => { this.input = i; }}
+                                            <input class="form-control" id="year" name="year" value={v.year} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
@@ -203,26 +207,26 @@ class EditVehicle extends Component {
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="vin">Vin Number:</label>
-                                            <input class="form-control" id="vin" name="vin" ref={(i) => { this.input = i; }}
+                                            <input class="form-control" id="vin" name="vin" value={v.vin} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="msrp">MSRP:</label>
-                                        <input class="form-control" id="msrp" name="msrp" ref={(i) => { this.input = i; }} 
-                                               onChange={this.handleChange} type="text" />
+                                        <input class="form-control" id="msrp" name="msrp" value={v.msrp} 
+                                                   onChange={this.handleChange} type="text" />
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="description">Description:</label>
-                                            <textarea class="form-control" id="description" name="description" ref={(i) => { this.input = i; }}
-                                                      onChange={this.handleChange} type="text" />
+                                            <textarea class="form-control" id="description" name="description" value={v.description} 
+                                                   onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <label for="photo">Photo:</label>
-                                        <input class="form-control" id="photo" name="photo" ref={(i) => { this.input = i; }}
-                                               onChange={this.handleChange} type="text" />
+                                        <input class="form-control" id="photo" name="photo" value={v.photo} 
+                                                   onChange={this.handleChange} type="text" />
                                     </div>
                                 </div>
                             </fieldset>
@@ -233,28 +237,28 @@ class EditVehicle extends Component {
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="purchaserName">Purchaser Name:</label>
-                                            <input class="form-control" id="purchaserName" name="purchaserName" ref={(i) => { this.input = i; }}
+                                            <input class="form-control" id="purchaserName" name="purchaserName" value={v.purchaserName} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="purchaserEmail">Purchaser Email:</label>
-                                            <input class="form-control" id="purchaserEmail" name="purchaserEmail" ref={(i) => { this.input = i; }}
+                                            <input class="form-control" id="purchaserEmail" name="purchaserEmail" value={v.purchaserEmail} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="purchaseDate">Purchase Date:</label>
-                                            <input class="form-control" id="purchaseDate" name="purchaseDate" ref={(i) => { this.input = i; }}
+                                            <input class="form-control" id="purchaseDate" name="purchaseDate" value={v.purchaseDate} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="pricePaid">Price Paid</label>
-                                            <input class="form-control" id="pricePaid" name="pricePaid" ref={(i) => { this.input = i; }}
+                                            <input class="form-control" id="pricePaid" name="pricePaid" value={v.pricePaid} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
@@ -263,7 +267,7 @@ class EditVehicle extends Component {
 
                             <div className="form-group">
                                 <div className="col-md-offset-10 col-md-3">
-                                    <button onClick={this.props.handleSubmit} className="btn btn-primary">Save Changes</button>&nbsp;&nbsp;
+                                    <button disabled={isDisabled} onClick={this.props.handleSubmit} className="btn btn-primary">Save Changes</button>&nbsp;&nbsp;
                                     <Link className='btn btn-default' to='/vehicles'>Cancel</Link>
                                 </div>
                             </div>
