@@ -55,8 +55,8 @@ class AddVehicle extends Component {
         // Turn off default form handling
         e.preventDefault();
 
-        const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle";
-        //const url = "http://localhost:8080/api/vehicle";
+        //const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle";
+        const url = "http://localhost:8080/api/vehicle";
 
         const newVehicle = {
             //'id': 202,
@@ -128,7 +128,7 @@ class AddVehicle extends Component {
 
                         <br />
 
-                        <form onSubmit={this.handleSubmit}>
+                        {/* <form onSubmit={this.handleSubmit}> */}
                             <fieldset>
                                 <legend>Vehicle Information</legend>
                                 <div class="row">
@@ -223,11 +223,11 @@ class AddVehicle extends Component {
 
                             <div className="form-group">
                                 <div className="col-md-offset-10 col-md-3">
-                                    <button onClick={this.props.handleSubmit} className="btn btn-primary">Add Vehicle</button>&nbsp;&nbsp;
+                                    <button onClick={this.handleSubmit} className="btn btn-primary">Add Vehicle</button>&nbsp;&nbsp;
                                     <Link className='btn btn-default' to='/vehicles'>Cancel</Link>
                                 </div>
                             </div>
-                        </form>
+                        {/* </form> */}
                     </div>
                 </div>
             </div>
