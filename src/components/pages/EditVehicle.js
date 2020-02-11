@@ -88,8 +88,8 @@ class EditVehicle extends Component {
         // Turn off default form handling
         e.preventDefault();
 
-        const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle";
-        //const url = "http://localhost:8080/api/vehicle";
+        //const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
+        const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
 
         const newVehicle = {
             'id': this.props.id,
@@ -147,7 +147,7 @@ class EditVehicle extends Component {
         var isDisabled = 0;
 
         // Determine the button state
-        if (v.make === "" || v.model === "" || v.colour === "" || v.year === "" || v.vin === "" || v.msrp === "" ) {
+        if (v.make === "" && v.model === "" && v.colour === "" && v.year === "" && v.vin === "" && v.msrp === "" ) {
             isDisabled = true;
             console.log(isDisabled);
         } else {
