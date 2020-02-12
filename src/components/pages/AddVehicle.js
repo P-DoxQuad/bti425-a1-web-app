@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
-import { resolve } from 'dns';
 
 class AddVehicle extends Component {
     constructor(props) {
