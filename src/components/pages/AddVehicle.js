@@ -126,8 +126,6 @@ class AddVehicle extends Component {
                         <h2>Add Vehicle</h2>
 
                         <br />
-
-                        {/* <form onSubmit={this.handleSubmit}> */}
                             <fieldset>
                                 <legend>Vehicle Information</legend>
                                 <div className="row">
@@ -226,7 +224,6 @@ class AddVehicle extends Component {
                                     <Link className='btn btn-default' to='/vehicles'>Cancel</Link>
                                 </div>
                             </div>
-                        {/* </form> */}
                     </div>
                 </div>
             </div>
