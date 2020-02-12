@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
 
+/****************************************************************************
+ * EditVehicle: This is the component for handling everything related to    *
+ * editing records. App() calls this component with a Route.                *
+ * **************************************************************************/
 class EditVehicle extends Component {
     constructor(props) {
         super(props);
@@ -48,10 +52,11 @@ class EditVehicle extends Component {
         // Can also do data validation in here
     }
 
+// ************************ When Page Has Finished Loading Components ***********************************/
     componentDidMount() {
         
-        //const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
-        const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
+        const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
+        //const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
 
         // Get all
         fetch(url)
@@ -85,6 +90,7 @@ class EditVehicle extends Component {
 
     };
 
+// ************************* Actions When Page Is Submitted *************************************//
     handleSubmit(e) {
 
         // Turn off default form handling
@@ -94,6 +100,7 @@ class EditVehicle extends Component {
         const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
         var newVehicle = { };
         console.log("Resubmit Values " + { [e.target.name]: e.target.value});
+        
         if ({ [e.target.name]: e.target.value} =="") {
 
             newVehicle = {
@@ -129,6 +136,7 @@ class EditVehicle extends Component {
             };
         }
 
+// ********************* Update Data with Fetch API ***********************************************//
         fetch(url, {
             method: 'PUT',
             headers: { "Content-Type": 'application/json' },
@@ -162,6 +170,7 @@ class EditVehicle extends Component {
 
     };
 
+// *************************** This controls the page render ************************************//
     render() {
         document.title = `Edit Vehicle ${this.props.id}`;
 
@@ -178,18 +187,17 @@ class EditVehicle extends Component {
             isDisabled = false;
         }
 
-        // If "this.input" exists (it will only get rendered if a form exists), set its focus
+        /* If "this.input" exists (it will only get rendered if a form exists), set its focus
         if (this.textInput && this.state.make.length === 0 && this.state.model.length === 0) {
             //this.textInput.focus();
-        }
+        }*/
 
+// ***************************** HTML Markup starts here *********************************************//
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-
                         <h2>Edit Vehicle</h2>
-
                         <br />
                             <fieldset>
                                 <legend>Vehicle Information</legend>
@@ -299,5 +307,4 @@ class EditVehicle extends Component {
         );
     }
 }
-
 export default withRouter(EditVehicle);

@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
+/****************************************************************************
+ * VehicleList: This is the component for handling everything related to    *
+ * viewing records. App() calls this component with a Route.                *
+ * **************************************************************************/
 class VehicleList extends Component {
   // Class properties 
 
   state = { vehicles: [] };
 
   componentDidMount() {
-    //const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicles/";
-    const url = "http://localhost:8080/api/vehicles";
+    const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicles/";
+    //const url = "http://localhost:8080/api/vehicles";
 
     // Get all
     fetch(url)
       .then(response => {
-        // Optional...
         this.setState({ httpStatusCode: response.status, httpStatusOk: response.ok });
         if (response.ok) {
           // Parse the response body as JSON
@@ -27,11 +30,7 @@ class VehicleList extends Component {
         }
       })
       .then(responseData => {
-        // "responseData" is an object; here, we're interested in its "data" property
-        // Study the shape of the data in the reqres.in service
         this.setState({ vehicles: responseData });
-        // Optional...
-        //console.log(responseData.data);
       })
       .catch(error => {
         // Handles an error thrown above, as well as network general errors
@@ -40,6 +39,7 @@ class VehicleList extends Component {
 
   }
 
+// *************************** This controls the page render ************************************//
   render() {
     document.title = 'Vehicle List';
 
@@ -58,11 +58,7 @@ class VehicleList extends Component {
 
 export default VehicleList;
 
-// ############################################################
-// Most of the following was copied from the react-tania-updated code example
-// ############################################################
-
-// Function component, table header
+// ************* Function component, table header ************************ //
 const TableHeader = () => {
   return (
     <thead>
@@ -80,8 +76,7 @@ const TableHeader = () => {
   );
 }
 
-// Function component
-// Its purpose is to render the HTML table body element
+// ******** Function component to render the HTML table body element ******* //
 const TableBody = (props) => {
 
   // Using the array of objects, create a new array of React elements
@@ -94,15 +89,10 @@ const TableBody = (props) => {
   return <tbody>{rows}</tbody>
 }
 
-// Function component
-// Its purpose is to render a single HTML table row
+// ******** Function component to render a single HTML table row *********** //
 const TableRow = props => {
 
-  // For coding convenience (below), create a very short variable name
   const v = props.vehicle;
-
-  // Alternative declaration syntax...
-  //const { u } = this.props;
 
   // Render the row
   return (

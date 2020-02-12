@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
+/****************************************************************************
+ * DelVehicle: This is the component for handling everything related to     *
+ * deleting a record. App() calls this component with a Route.              *
+ * **************************************************************************/
 class DelVehicle extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +18,6 @@ class DelVehicle extends Component {
     //url = `http://localhost:8080/api/vehicles/${this.props.id}`;
 
     componentDidMount() {
-        
 
         // Get all
         fetch(this.url)
@@ -46,7 +49,7 @@ class DelVehicle extends Component {
 
     }
 
-
+// *************************** This controls the page render ************************************//
     handleSubmit(e) {
 
         // Delete
@@ -78,6 +81,7 @@ class DelVehicle extends Component {
             });
     }
 
+// *************************** This controls the page render ************************************//
     render() {
         document.title = `Delete Vehicle ${this.props._id}`;
 

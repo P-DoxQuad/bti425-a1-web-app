@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
 
+/****************************************************************************
+ * AddVehicle: This is the component for handling everything related to     *
+ * adding to the records. App() calls this component with a Route.          *
+ * **************************************************************************/
 class AddVehicle extends Component {
     constructor(props) {
         super(props);
@@ -49,13 +53,14 @@ class AddVehicle extends Component {
         //this.input.focus();
     }
 
+// *************************** This controls the page render ************************************//
     handleSubmit(e) {
 
         // Turn off default form handling
         e.preventDefault();
 
-        //const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle";
-        const url = "http://localhost:8080/api/vehicle";
+        const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle";
+        //const url = "http://localhost:8080/api/vehicle";
 
         const newVehicle = {
             //'id': 202,
@@ -110,6 +115,7 @@ class AddVehicle extends Component {
 
     }
 
+// *************************** This controls the page render ************************************//
     render() {
         document.title = `Add New Vehicle`;
 

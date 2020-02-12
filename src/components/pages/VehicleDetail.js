@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
-
+/****************************************************************************
+ * VehicleDetail: This is the component for handling everything related to  *
+ * viewing details of records. App() calls this component with a Route.     *
+ * **************************************************************************/
 class VehicleDetail extends Component {
 
   // Class properties 
@@ -9,8 +12,8 @@ class VehicleDetail extends Component {
   state = { vehicles: {}, httpStatusCode: 0, httpStatus: false };
 
   componentDidMount() {
-    //const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
-    const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
+    const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
+    //const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
 
     // Get all
     fetch(url)
@@ -42,10 +45,10 @@ class VehicleDetail extends Component {
 
   }
 
+// *************************** This controls the page render ************************************//
   render() {
     document.title = `Vehicle ${this.props.id} Details`;
 
-    // For coding convenience, create a shortcut object
     const v = this.state.vehicles;
 
     return (
