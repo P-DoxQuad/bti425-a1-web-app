@@ -119,9 +119,9 @@ class AddVehicle extends Component {
         }
 
         return (
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-12">
 
                         <h2>Add Vehicle</h2>
 
@@ -130,90 +130,90 @@ class AddVehicle extends Component {
                         {/* <form onSubmit={this.handleSubmit}> */}
                             <fieldset>
                                 <legend>Vehicle Information</legend>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="make">Make:</label>
-                                            <input class="form-control" id="make" name="make" ref={(i) => { this.input = i; }} 
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="make">Make:</label>
+                                            <input className="form-control" id="make" name="make" ref={(i) => { this.input = i; }} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="model">Model:</label>
-                                            <input class="form-control" id="model" name="model" ref={(i) => { this.input = i; }}
-                                                   onChange={this.handleChange} type="text" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="colour">Colour:</label>
-                                            <input class="form-control" id="colour" name="colour" ref={(i) => { this.input = i; }}
-                                                   onChange={this.handleChange} type="text" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="year">Year:</label>
-                                            <input class="form-control" id="year" name="year" ref={(i) => { this.input = i; }}
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="model">Model:</label>
+                                            <input className="form-control" id="model" name="model" ref={(i) => { this.input = i; }}
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="vin">Vin Number:</label>
-                                            <input class="form-control" id="vin" name="vin" onChange={this.handleChange} type="text" />
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="colour">Colour:</label>
+                                            <input className="form-control" id="colour" name="colour" ref={(i) => { this.input = i; }}
+                                                   onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="msrp">MSRP:</label>
-                                        <input class="form-control" id="msrp" name="msrp" onChange={this.handleChange} type="text" />
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="description">Description:</label>
-                                            <textarea class="form-control" id="description" name="description" onChange={this.handleChange} type="text" />
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="year">Year:</label>
+                                            <input className="form-control" id="year" name="year" ref={(i) => { this.input = i; }}
+                                                   onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <label for="photo">Photo:</label>
-                                        <input class="form-control" id="photo" name="photo" onChange={this.handleChange} type="text" />
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="vin">Vin Number:</label>
+                                            <input className="form-control" id="vin" name="vin" onChange={this.handleChange} type="text" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <label htmlFor="msrp">MSRP:</label>
+                                        <input className="form-control" id="msrp" name="msrp" onChange={this.handleChange} type="text" />
+                                    </div>
+                                    <div className="col-md-12">
+                                        <div className="form-group">
+                                            <label htmlFor="description">Description:</label>
+                                            <textarea className="form-control" id="description" name="description" onChange={this.handleChange} type="text" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <label htmlFor="photo">Photo:</label>
+                                        <input className="form-control" id="photo" name="photo" onChange={this.handleChange} type="text" />
                                     </div>
                                 </div>
                             </fieldset>
                             <hr />
                             <fieldset>
                                 <legend>Purchase Information</legend>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="purchaserName">Purchaser Name:</label>
-                                            <input class="form-control" id="purchaserName" name="purchaserName" onChange={this.handleChange}
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="purchaserName">Purchaser Name:</label>
+                                            <input className="form-control" id="purchaserName" name="purchaserName" onChange={this.handleChange}
                                                 type="text" />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="purchaserEmail">Purchaser Email:</label>
-                                            <input class="form-control" id="purchaserEmail" name="purchaserEmail" onChange={this.handleChange}
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="purchaserEmail">Purchaser Email:</label>
+                                            <input className="form-control" id="purchaserEmail" name="purchaserEmail" onChange={this.handleChange}
                                                 type="text" />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="purchaseDate">Purchase Date:</label>
-                                            <input class="form-control" id="purchaseDate" name="purchaseDate" onChange={this.handleChange}
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="purchaseDate">Purchase Date:</label>
+                                            <input className="form-control" id="purchaseDate" name="purchaseDate" onChange={this.handleChange}
                                                 type="text" />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="pricePaid">Price Paid</label>
-                                            <input class="form-control" id="pricePaid" name="pricePaid" onChange={this.handleChange} 
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="pricePaid">Price Paid</label>
+                                            <input className="form-control" id="pricePaid" name="pricePaid" onChange={this.handleChange} 
                                                 type="text" />
                                         </div>
                                     </div>
