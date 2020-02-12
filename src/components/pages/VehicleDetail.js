@@ -50,7 +50,7 @@ class VehicleDetail extends Component {
 
     return (
       <div>
-        <h4>Details About Vehicle #{v.id} - {v.make} {v.model} (VIN:{v.vin}) from Database</h4>
+        <h4>Details About Vehicle #{this.props.id} - {v.make} {v.model} (VIN:{v.vin}) from Database</h4>
 
         {this.state.httpStatusOk ? (
           <div className="row">
@@ -67,11 +67,11 @@ class VehicleDetail extends Component {
                 <dt>Purchaser Name</dt><dd>{v.purchaserName}</dd>
                 <dt>Purchaser Email</dt><dd>{v.purchaserEmail}</dd>
                 <dt>Purchase Date</dt><dd>{v.purchaseDate}</dd>
-                <dt>Price Paid</dt><dd>{v.pricePaid}</dd>
+                <dt>Price Paid</dt><dd>${v.pricePaid}</dd>
               </dl>
             </div>
             <div className="col-md-2">
-              <img src={v.photo} alt="" className="img-responsive" />
+              <img src={v.photo} alt="" className='imgInTable' width="700px" />
             </div>
           </div>
 
