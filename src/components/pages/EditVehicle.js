@@ -177,7 +177,7 @@ class EditVehicle extends Component {
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="make">Make:</label>
-                                            <input class="form-control" id="make" name="make" defaultdefaultValue={v.make} 
+                                            <input class="form-control" id="make" name="make" defaultValue={v.make} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
