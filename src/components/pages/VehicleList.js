@@ -108,7 +108,7 @@ const TableRow = props => {
   return (
     <tr>
       <td>{v._id}</td>
-      <td><img src={v.photo} alt='' className='imgInTable' /></td>
+      <td><img src={v.photo} alt='' className="img-thumbnail" width="100px" /></td>
       <td>{v.make}</td>
       <td>{v.model}</td>
       <td>{v.colour}</td>
