@@ -92,22 +92,42 @@ class EditVehicle extends Component {
 
         //const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
         const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
+        var newVehicle = { };
+        console.log("Resubmit Values " + { [e.target.name]: e.target.value});
+        if ({ [e.target.name]: e.target.value} =="") {
 
-        const newVehicle = {
-            'id': this.props.id,
-            'make': this.state.make,
-            'model': this.state.model,
-            'colour': this.state.colour,
-            'year': this.state.year,
-            'vin': this.state.vin,
-            'msrp': this.state.msrp,
-            'photo': this.state.photo,
-            'description': this.state.description,
-            'purchaseDate': this.state.purchaseDate,
-            'purchaserName': this.state.purchaserName,
-            'purchaserEmail': this.state.purchaserEmail,
-            'pricePaid': this.state.pricePaid
-        };
+            newVehicle = {
+                'id': this.props.id,
+                'make': this.props.make,
+                'model': this.props.model,
+                'colour': this.props.colour,
+                'year': this.props.year,
+                'vin': this.props.vin,
+                'msrp': this.props.msrp,
+                'photo': this.props.photo,
+                'description': this.props.description,
+                'purchaseDate': this.props.purchaseDate,
+                'purchaserName': this.props.purchaserName,
+                'purchaserEmail': this.props.purchaserEmail,
+                'pricePaid': this.props.pricePaid
+            };
+        } else {
+            newVehicle = {
+                'id': this.props.id,
+                'make': this.state.make,
+                'model': this.state.model,
+                'colour': this.state.colour,
+                'year': this.state.year,
+                'vin': this.state.vin,
+                'msrp': this.state.msrp,
+                'photo': this.state.photo,
+                'description': this.state.description,
+                'purchaseDate': this.state.purchaseDate,
+                'purchaserName': this.state.purchaserName,
+                'purchaserEmail': this.state.purchaserEmail,
+                'pricePaid': this.state.pricePaid
+            };
+        }
 
         fetch(url, {
             method: 'PUT',
@@ -148,6 +168,8 @@ class EditVehicle extends Component {
         var v = this.state.vehicles;
         var isDisabled = 0;
 
+
+
         // Determine the button state
         if (v.make === "" && v.model === "" && v.colour === "" && v.year === "" && v.vin === "" && v.msrp === "" ) {
             isDisabled = true;
@@ -162,72 +184,70 @@ class EditVehicle extends Component {
         }
 
         return (
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-12">
 
                         <h2>Edit Vehicle</h2>
 
                         <br />
-
-                        {/* <form onSubmit={this.handleSubmit}> */}
                             <fieldset>
                                 <legend>Vehicle Information</legend>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="make">Make:</label>
-                                            <input class="form-control" id="make" name="make" defaultValue={v.make} 
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="make">Make:</label>
+                                            <input className="form-control" id="make" name="make" defaultValue={v.make} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="model">Model:</label>
-                                            <input class="form-control" id="model" name="model" defaultValue={v.model} 
-                                                   onChange={this.handleChange} type="text" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="colour">Colour:</label>
-                                            <input class="form-control" id="colour" name="colour" defaultValue={v.colour} 
-                                                   onChange={this.handleChange} type="text" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="year">Year:</label>
-                                            <input class="form-control" id="year" name="year" defaultValue={v.year} 
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="model">Model:</label>
+                                            <input className="form-control" id="model" name="model" defaultValue={v.model} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="vin">Vin Number:</label>
-                                            <input class="form-control" id="vin" name="vin" defaultValue={v.vin} 
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="colour">Colour:</label>
+                                            <input className="form-control" id="colour" name="colour" defaultValue={v.colour} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="msrp">MSRP:</label>
-                                        <input class="form-control" id="msrp" name="msrp" defaultValue={v.msrp} 
-                                                   onChange={this.handleChange} type="text" />
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="description">Description:</label>
-                                            <textarea class="form-control" id="description" name="description" defaultValue={v.description} 
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="year">Year:</label>
+                                            <input className="form-control" id="year" name="year" defaultValue={v.year} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <label for="photo">Photo:</label>
-                                        <input class="form-control" id="photo" name="photo" defaultValue={v.photo} 
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="vin">Vin Number:</label>
+                                            <input className="form-control" id="vin" name="vin" defaultValue={v.vin} 
+                                                   onChange={this.handleChange} type="text" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <label htmlFor="msrp">MSRP:</label>
+                                        <input className="form-control" id="msrp" name="msrp" defaultValue={v.msrp} 
+                                                   onChange={this.handleChange} type="text" />
+                                    </div>
+                                    <div className="col-md-12">
+                                        <div className="form-group">
+                                            <label htmlFor="description">Description:</label>
+                                            <textarea className="form-control" id="description" name="description" defaultValue={v.description} 
+                                                   onChange={this.handleChange} type="text" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <label htmlFor="photo">Photo:</label>
+                                        <input className="form-control" id="photo" name="photo" defaultValue={v.photo} 
                                                    onChange={this.handleChange} type="text" />
                                     </div>
                                 </div>
@@ -235,32 +255,32 @@ class EditVehicle extends Component {
                             <hr />
                             <fieldset>
                                 <legend>Purchase Information</legend>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="purchaserName">Purchaser Name:</label>
-                                            <input class="form-control" id="purchaserName" name="purchaserName" defaultValue={v.purchaserName} 
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="purchaserName">Purchaser Name:</label>
+                                            <input className="form-control" id="purchaserName" name="purchaserName" defaultValue={v.purchaserName} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="purchaserEmail">Purchaser Email:</label>
-                                            <input class="form-control" id="purchaserEmail" name="purchaserEmail" defaultValue={v.purchaserEmail} 
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="purchaserEmail">Purchaser Email:</label>
+                                            <input className="form-control" id="purchaserEmail" name="purchaserEmail" defaultValue={v.purchaserEmail} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="purchaseDate">Purchase Date:</label>
-                                            <input class="form-control" id="purchaseDate" name="purchaseDate" defaultValue={v.purchaseDate} 
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="purchaseDate">Purchase Date:</label>
+                                            <input className="form-control" id="purchaseDate" name="purchaseDate" defaultValue={v.purchaseDate} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="pricePaid">Price Paid</label>
-                                            <input class="form-control" id="pricePaid" name="pricePaid" defaultValue={v.pricePaid} 
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="pricePaid">Price Paid</label>
+                                            <input className="form-control" id="pricePaid" name="pricePaid" defaultValue={v.pricePaid} 
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
@@ -273,7 +293,6 @@ class EditVehicle extends Component {
                                     <Link className='btn btn-default' to='/vehicles'>Cancel</Link>
                                 </div>
                             </div>
-                        {/* </form> */}
                     </div>
                 </div>
             </div>
