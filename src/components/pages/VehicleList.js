@@ -7,8 +7,8 @@ class VehicleList extends Component {
   state = { vehicles: [] };
 
   componentDidMount() {
-    const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicles/";
-    //const url = "http://localhost:8080/api/vehicles";
+    //const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicles/";
+    const url = "http://localhost:8080/api/vehicles";
 
     // Get all
     fetch(url)

@@ -9,8 +9,8 @@ class VehicleDetail extends Component {
   state = { vehicles: {}, httpStatusCode: 0, httpStatus: false };
 
   componentDidMount() {
-    const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
-    //const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
+    //const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
+    const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
 
     // Get all
     fetch(url)
