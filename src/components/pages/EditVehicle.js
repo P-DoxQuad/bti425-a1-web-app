@@ -11,6 +11,18 @@ class EditVehicle extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.inputMake = React.createRef();
+        this.inputModel = React.createRef();
+        this.inputColour = React.createRef();
+        this.inputYear = React.createRef();
+        this.inputVIN = React.createRef();
+        this.inputMSRP = React.createRef();
+        this.inputPhoto = React.createRef();
+        this.inputDesc = React.createRef();
+        this.inputPurchaseDate = React.createRef();
+        this.inputPurchaseName = React.createRef();
+        this.inputPurchaseEmail = React.createRef();
+        this.inputPricePaid = React.createRef();
     }
 
     state = {
@@ -31,7 +43,8 @@ class EditVehicle extends Component {
     };
 
     handleChange(e) {
-        this.setState({ [e.target.name]: e.target.value});
+        //this.setState({ [e.target.name]: e.target.value});
+        //this.setState({ [e.target.name]: this.input.current.value});
         console.log([e.target.name], e.target.value);
 
         console.log(` 
@@ -55,8 +68,8 @@ class EditVehicle extends Component {
 // ************************ When Page Has Finished Loading Components ***********************************/
     componentDidMount() {
         
-        const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
-        //const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
+        //const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
+        const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
 
         // Get all
         fetch(url)
@@ -85,9 +98,6 @@ class EditVehicle extends Component {
                 // Handles an error thrown above, as well as network general errors
                 console.log(error)
             });
-
-
-
     };
 
 // ************************* Actions When Page Is Submitted *************************************//
@@ -96,46 +106,39 @@ class EditVehicle extends Component {
         // Turn off default form handling
         e.preventDefault();
 
-        //const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
-        const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
+        const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
+        //const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
         var newVehicle = { };
-        console.log("Resubmit Values " + { [e.target.name]: e.target.value});
-        
-        if ({ [e.target.name]: e.target.value} =="") {
-
-            newVehicle = {
+        newVehicle = {
                 'id': this.props.id,
-                'make': this.props.make,
-                'model': this.props.model,
-                'colour': this.props.colour,
-                'year': this.props.year,
-                'vin': this.props.vin,
-                'msrp': this.props.msrp,
-                'photo': this.props.photo,
-                'description': this.props.description,
-                'purchaseDate': this.props.purchaseDate,
-                'purchaserName': this.props.purchaserName,
-                'purchaserEmail': this.props.purchaserEmail,
-                'pricePaid': this.props.pricePaid
-            };
-        } else {
-            newVehicle = {
-                'id': this.props.id,
-                'make': this.state.make,
-                'model': this.state.model,
-                'colour': this.state.colour,
-                'year': this.state.year,
-                'vin': this.state.vin,
-                'msrp': this.state.msrp,
-                'photo': this.state.photo,
-                'description': this.state.description,
-                'purchaseDate': this.state.purchaseDate,
-                'purchaserName': this.state.purchaserName,
-                'purchaserEmail': this.state.purchaserEmail,
-                'pricePaid': this.state.pricePaid
-            };
-        }
-
+                'make': this.inputMake.current.value,
+                'model': this.inputModel.current.value,
+                'colour': this.inputColour.current.value,
+                'year': this.inputYear.current.value,
+                'vin': this.inputVIN.current.value,
+                'msrp': this.inputMSRP.current.value,
+                'photo': this.inputPhoto.current.value,
+                'description': this.inputDesc.current.value,
+                'purchaseDate': this.inputPurchaseDate.current.value,
+                'purchaserName': this.inputPurchaseName.current.value,
+                'purchaserEmail': this.inputPurchaseEmail.current.value,
+                'pricePaid': this.inputPricePaid.current.value
+        };
+    //     newVehicle = {
+    //         'id': this.props.id,
+    //         'make': this.state.make,
+    //         'model': this.state.model,
+    //         'colour': this.state.colour,
+    //         'year': this.state.year,
+    //         'vin': this.state.vin,
+    //         'msrp': this.state.msrp,
+    //         'photo': this.state.photo,
+    //         'description': this.state.description,
+    //         'purchaseDate': this.state.purchaseDate,
+    //         'purchaserName': this.state.purchaserName,
+    //         'purchaserEmail': this.state.purchaserEmail,
+    //         'pricePaid': this.state.pricePaid
+    // };
 // ********************* Update Data with Fetch API ***********************************************//
         fetch(url, {
             method: 'PUT',
@@ -205,14 +208,14 @@ class EditVehicle extends Component {
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <label htmlFor="make">Make:</label>
-                                            <input className="form-control" id="make" name="make" defaultValue={v.make} 
+                                            <input className="form-control" id="make" name="make" defaultValue={v.make} ref={this.inputMake}
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <label htmlFor="model">Model:</label>
-                                            <input className="form-control" id="model" name="model" defaultValue={v.model} 
+                                            <input className="form-control" id="model" name="model" defaultValue={v.model} ref={this.inputModel}
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
@@ -221,14 +224,14 @@ class EditVehicle extends Component {
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <label htmlFor="colour">Colour:</label>
-                                            <input className="form-control" id="colour" name="colour" defaultValue={v.colour} 
+                                            <input className="form-control" id="colour" name="colour" defaultValue={v.colour} ref={this.inputColour}
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <label htmlFor="year">Year:</label>
-                                            <input className="form-control" id="year" name="year" defaultValue={v.year} 
+                                            <input className="form-control" id="year" name="year" defaultValue={v.year} ref={this.inputYear}
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
@@ -237,25 +240,25 @@ class EditVehicle extends Component {
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <label htmlFor="vin">Vin Number:</label>
-                                            <input className="form-control" id="vin" name="vin" defaultValue={v.vin} 
+                                            <input className="form-control" id="vin" name="vin" defaultValue={v.vin} ref={this.inputVIN}
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
                                         <label htmlFor="msrp">MSRP:</label>
-                                        <input className="form-control" id="msrp" name="msrp" defaultValue={v.msrp} 
+                                        <input className="form-control" id="msrp" name="msrp" defaultValue={v.msrp} ref={this.inputMSRP}
                                                    onChange={this.handleChange} type="text" />
                                     </div>
                                     <div className="col-md-12">
                                         <div className="form-group">
                                             <label htmlFor="description">Description:</label>
-                                            <textarea className="form-control" id="description" name="description" defaultValue={v.description} 
+                                            <textarea className="form-control" id="description" name="description" defaultValue={v.description} ref={this.inputDesc}
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div className="col-md-12">
                                         <label htmlFor="photo">Photo:</label>
-                                        <input className="form-control" id="photo" name="photo" defaultValue={v.photo} 
+                                        <input className="form-control" id="photo" name="photo" defaultValue={v.photo} ref={this.inputPhoto}
                                                    onChange={this.handleChange} type="text" />
                                     </div>
                                 </div>
@@ -267,28 +270,28 @@ class EditVehicle extends Component {
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <label htmlFor="purchaserName">Purchaser Name:</label>
-                                            <input className="form-control" id="purchaserName" name="purchaserName" defaultValue={v.purchaserName} 
+                                            <input className="form-control" id="purchaserName" name="purchaserName" defaultValue={v.purchaserName} ref={this.inputPurchaseName}
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <label htmlFor="purchaserEmail">Purchaser Email:</label>
-                                            <input className="form-control" id="purchaserEmail" name="purchaserEmail" defaultValue={v.purchaserEmail} 
+                                            <input className="form-control" id="purchaserEmail" name="purchaserEmail" defaultValue={v.purchaserEmail} ref={this.inputPurchaseEmail}
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <label htmlFor="purchaseDate">Purchase Date:</label>
-                                            <input className="form-control" id="purchaseDate" name="purchaseDate" defaultValue={v.purchaseDate} 
+                                            <input className="form-control" id="purchaseDate" name="purchaseDate" defaultValue={v.purchaseDate} ref={this.inputPurchaseDate}
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <label htmlFor="pricePaid">Price Paid</label>
-                                            <input className="form-control" id="pricePaid" name="pricePaid" defaultValue={v.pricePaid} 
+                                            <input className="form-control" id="pricePaid" name="pricePaid" defaultValue={v.pricePaid} ref={this.inputPricePaid}
                                                    onChange={this.handleChange} type="text" />
                                         </div>
                                     </div>
