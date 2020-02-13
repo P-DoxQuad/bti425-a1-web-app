@@ -20,7 +20,7 @@ class NavBar extends Component {
                             <NavButton name="Home" page="/" />
                             <NavButton name="Vehicle List" page="/vehicles" />
                             <NavButton name="Add A Vehicle" page="/vehicle/add/" />
-                            <NavButton name="Other" page="/about" />
+                            {/* <NavButton name="Other" page="/about" /> */}
                         </ul>
                     </div>
                 </div>
