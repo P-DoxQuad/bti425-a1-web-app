@@ -1,0 +1,6 @@
+I suspect that the problem you mentioned can be fixed with more statements that will set the value of properties in a package of data that gets assembled in the “handle submit” method. Here’s the data flow sequence for the properties of an object:
+1. When the edit component loads, the current (old) object values are fetched 
+2. They are saved in state variables (so they can participate in the useful data binding) 
+3. The user updates one or more properties  
+4. When the save/submit task starts, a new object is created, using the values in state 
+5. That object is sent 
