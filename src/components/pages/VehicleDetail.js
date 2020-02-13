@@ -83,7 +83,7 @@ class VehicleDetail extends Component {
           )}
 
         <hr />
-        <p><Link className='btn btn-warning' to={`/vehicle/edit/${v.id}`}>Edit</Link>&nbsp;&nbsp;
+        <p><Link className='btn btn-warning' to={`/vehicle/edit/${this.props.id}`}>Edit</Link>&nbsp;&nbsp;
         <Link className='btn btn-default' to='/vehicles'>Show list of Vehicles</Link></p>
       </div>
     );
