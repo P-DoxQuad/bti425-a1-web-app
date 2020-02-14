@@ -33,9 +33,9 @@ function App() {
   return (
     <div>
       <Router>
-         <NavBar />                           {/* The Top Navigation Bar */}
-        <Switch>                              {/* Start Breakout for different Routes */}
-
+         <NavBar /> {/* The Top Navigation Bar */}
+        <Switch>    {/* Start Breakout for different Routes */}
+        
 {/******************** Routes are paths to render other pages. ********************************************************************************************/}
           <Route exact path="/" render={() => (<Home />)} />                                                            {/* Goto Home Page */}
           <Route exact path="/vehicles" render={() => (<VehicleList />)} />                                             {/* Goto Vehicle List Page */}

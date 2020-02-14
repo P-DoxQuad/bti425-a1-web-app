@@ -11,6 +11,8 @@ class EditVehicle extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
+//****************References to Input Fields*************************//
         this.inputMake = React.createRef();
         this.inputModel = React.createRef();
         this.inputColour = React.createRef();
@@ -43,8 +45,7 @@ class EditVehicle extends Component {
     };
 
     handleChange(e) {
-        //this.setState({ [e.target.name]: e.target.value});
-        //this.setState({ [e.target.name]: this.input.current.value});
+        this.setState({ [e.target.name]: e.target.value});
         console.log([e.target.name], e.target.value);
 
         console.log(` 
@@ -66,10 +67,9 @@ class EditVehicle extends Component {
     }
 
 // ************************ When Page Has Finished Loading Components ***********************************/
-    componentDidMount() {
-        
-        //const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
-        const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
+    componentDidMount() {        
+        const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
+        //const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
 
         // Get all
         fetch(url)
@@ -89,10 +89,7 @@ class EditVehicle extends Component {
             })
             .then(responseData => {
                 // "responseData" is an object; here, we're interested in its "data" property
-                // Study the shape of the data in the reqres.in service
                 this.setState({ vehicles: responseData });
-                // Optional...
-                //console.log(responseData.data);
             })
             .catch(error => {
                 // Handles an error thrown above, as well as network general errors
@@ -108,8 +105,9 @@ class EditVehicle extends Component {
 
         const url = `https://bti425-a1-web-api.herokuapp.com/api/vehicles/${this.props.id}`;
         //const url = `http://localhost:8080/api/vehicles/${this.props.id}`;
-        var newVehicle = { };
-        newVehicle = {
+
+    //********************** New Object with Values from Reference *******************************//
+        const newVehicle = {
                 'id': this.props.id,
                 'make': this.inputMake.current.value,
                 'model': this.inputModel.current.value,
@@ -124,22 +122,8 @@ class EditVehicle extends Component {
                 'purchaserEmail': this.inputPurchaseEmail.current.value,
                 'pricePaid': this.inputPricePaid.current.value
         };
-    //     newVehicle = {
-    //         'id': this.props.id,
-    //         'make': this.state.make,
-    //         'model': this.state.model,
-    //         'colour': this.state.colour,
-    //         'year': this.state.year,
-    //         'vin': this.state.vin,
-    //         'msrp': this.state.msrp,
-    //         'photo': this.state.photo,
-    //         'description': this.state.description,
-    //         'purchaseDate': this.state.purchaseDate,
-    //         'purchaserName': this.state.purchaserName,
-    //         'purchaserEmail': this.state.purchaserEmail,
-    //         'pricePaid': this.state.pricePaid
-    // };
-// ********************* Update Data with Fetch API ***********************************************//
+  
+// ******************************* Update Data with Fetch API ************************************//
         fetch(url, {
             method: 'PUT',
             headers: { "Content-Type": 'application/json' },
@@ -160,8 +144,6 @@ class EditVehicle extends Component {
             })
             .then(responseData => {
                 // "responseData" is an object
-                // Study the shape of the data in the reqres.in service
-                // Optional...
                 console.log(responseData);
                 // The identifier "id" can be used to redirect
                 this.props.history.push(`/vehicle/detail/${this.props.id}`);
@@ -178,22 +160,6 @@ class EditVehicle extends Component {
         document.title = `Edit Vehicle ${this.props.id}`;
 
         var v = this.state.vehicles;
-        var isDisabled = 0;
-
-
-
-        // Determine the button state
-        if (v.make === "" && v.model === "" && v.colour === "" && v.year === "" && v.vin === "" && v.msrp === "" ) {
-            isDisabled = true;
-            console.log(isDisabled);
-        } else {
-            isDisabled = false;
-        }
-
-        /* If "this.input" exists (it will only get rendered if a form exists), set its focus
-        if (this.textInput && this.state.make.length === 0 && this.state.model.length === 0) {
-            //this.textInput.focus();
-        }*/
 
 // ***************************** HTML Markup starts here *********************************************//
         return (
@@ -300,7 +266,7 @@ class EditVehicle extends Component {
 
                             <div className="form-group">
                                 <div className="col-md-offset-10 col-md-3">
-                                    <button disabled={isDisabled} onClick={this.handleSubmit} className="btn btn-primary">Save Changes</button>&nbsp;&nbsp;
+                                    <button onClick={this.handleSubmit} className="btn btn-primary">Save Changes</button>&nbsp;&nbsp;
                                     <Link className='btn btn-default' to='/vehicles'>Cancel</Link>
                                 </div>
                             </div>

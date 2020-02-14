@@ -85,7 +85,6 @@ class DelVehicle extends Component {
     render() {
         document.title = `Delete Vehicle ${this.props._id}`;
 
-        // For coding convenience, create a shortcut object
         const v = this.state.vehicles;
 
         return (

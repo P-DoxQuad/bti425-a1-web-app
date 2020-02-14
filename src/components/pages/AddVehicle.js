@@ -11,6 +11,8 @@ class AddVehicle extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
+ //****************References to Input Fields*************************//
         this.inputMake = React.createRef();
         this.inputModel = React.createRef();
         this.inputColour = React.createRef();
@@ -26,6 +28,7 @@ class AddVehicle extends Component {
     }
 
     state = {
+        vehicles: {},
         //id: '',
         make: '',
         model: '',
@@ -57,12 +60,11 @@ class AddVehicle extends Component {
                      Purchaser Email: ${this.state.purchaserEmail},
                      Price Paid: ${this.state.pricePaid} 
                     `);
-
-        // Can also do data validation in here
     }
 
+// ************************ When Page Has Finished Loading Components ***********************************/
     componentDidMount() {
-        //this.input.focus();
+        // Not needed right now
     }
 
 // *************************** This controls the page render ************************************//
@@ -74,9 +76,7 @@ class AddVehicle extends Component {
         const url = "https://bti425-a1-web-api.herokuapp.com/api/vehicle";
         //const url = "http://localhost:8080/api/vehicle";
 
-        
-        var setError = 0;
-
+//***********************Basic Validation **************************************/
         if (!this.inputMake.current.value) {
             alert("'Make' is empty!");
         } else if (!this.inputModel.current.value) {
@@ -117,7 +117,6 @@ class AddVehicle extends Component {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
-                    //"Content-Type": 'application/x-www-form-urlencoded'
                     "Content-Type": 'application/json'
                 },
                 body: JSON.stringify(newVehicle)
@@ -137,8 +136,6 @@ class AddVehicle extends Component {
                 })
                 .then(responseData => {
                     // "responseData" is an object
-                    // Study the shape of the data in the reqres.in service
-                    // Optional...
                     console.log(responseData);
                     // The identifier "id" can be used to redirect
                     this.props.history.push(`/vehicles`);
@@ -155,10 +152,7 @@ class AddVehicle extends Component {
     render() {
         document.title = `Add New Vehicle`;
 
-        // If "this.input" exists (it will only get rendered if a form exists), set its focus
-        if (this.textInput && this.state.make.length === 0 && this.state.model.length === 0) {
-            //this.textInput.focus();
-        }
+        var v = this.state.vehicles;
 
         return (
             <div className="container">
